@@ -11,6 +11,7 @@ class TreeNode(object):
          self.left = None
          self.right = None
 
+#Recursion code
 class Solution(object):
     def postorderTraversal(self, root):
         """
@@ -26,3 +27,28 @@ class Solution(object):
                 postorder=self.postorderTraversal(root.left)+postorder
             
         return postorder
+
+#Iterative code
+class Solution(object):
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        if not root:
+            return []
+        alist,p1,p2=[],[],[]
+        p1.append(root)
+        while p1:
+            node=p1.pop()
+            p2.append(node)
+            if node.left:
+                p1.append(node.left)
+            if node.right:
+                p1.append(node.right)
+        
+        while p2:
+            node=p2.pop()
+            alist.append(node.val)
+        return alist
+
