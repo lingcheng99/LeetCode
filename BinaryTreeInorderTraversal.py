@@ -11,6 +11,7 @@ class TreeNode(object):
          self.left = None
          self.right = None
 
+#Recursion code
 class Solution(object):
     def inorderTraversal(self, root):
         """
@@ -25,3 +26,23 @@ class Solution(object):
             if root.right:
                 inorder=inorder+self.inorderTraversal(root.right)
         return inorder
+
+#Iterative code
+class Solution(object):
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        alist=[]
+        stack=[]
+        node=root
+        while node or len(stack)>=1:
+            if node:
+                stack.append(node)
+                node=node.left
+            else:
+                node=stack.pop()
+                alist.append(node.val)
+                node=node.right
+        return alist
