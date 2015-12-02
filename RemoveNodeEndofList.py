@@ -23,7 +23,7 @@ class Solution(object):
         :rtype: ListNode
         """
         length,pos=1,head
-        while pos.next!=None:
+        while pos.next:
             pos=pos.next
             length+=1
         
@@ -35,9 +35,9 @@ class Solution(object):
                 p1=head
             else:
                 p1=p1.next
-            p2=p1.next.next
-        p1.next=p2
+        p1.next=p1.next.next
         return head
+            
 
 
 #One-pass solution
@@ -50,7 +50,7 @@ class Solution(object):
         """
         dic={}
         length,pos=1,head
-        while pos.next!=None:
+        while pos.next:
             dic[length]=pos
             length+=1
             pos=pos.next
