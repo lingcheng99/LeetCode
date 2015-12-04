@@ -50,5 +50,26 @@ class Solution(object):
         pos.next=None
         return head
 
-
+#Second solution,with dummy head,extra for increase in digit,and nodes to combine two list
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        dummy=pos=ListNode(0)
+        nodes=[l1,l2]
+        extra=0
+        while nodes or extra!=0:
+            num=sum(a.val for a in nodes)+extra
+            nodes=[a.next for a in nodes if a.next]
+            pos.next=ListNode(num%10)
+            pos=pos.next
+            if num>9:
+                extra=1
+            else:
+                extra=0
+        pos.next=None
+        return dummy.next
 
